@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <vector>
+
 template <typename value_t>
 class Node2 {
 public:
