@@ -1,6 +1,7 @@
 #pragma once
 #include <stdexcept>
 #include <vector>
+#include <algorithm>
 
 #define VOLUME_COEFFICIENT 1.5
 
