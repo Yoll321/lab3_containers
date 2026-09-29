@@ -138,6 +138,7 @@ public:
             this->head = new_node;
         } else if (pos == size_val) {
             this->push_back(val);
+            return;
         } else {
             auto prev = get_node(pos - 1);
             if (!prev) return;
