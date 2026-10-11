@@ -118,13 +118,23 @@ public:
         return retval;
     }
 
+    int get_pos(const iterator& elem) {
+        size_t pos = 0;
+        for (auto i = this->begin(); i != this->end() && i != elem; ++i, pos++);
+        return (pos >= size_val ? -1 : pos);
+    }
+
     void erase(std::vector<unsigned int> pos_pool) {
-        std::sort(pos_pool.begin(), pos_pool.end());
-        for (unsigned int i = 0; i < pos_pool.size(); i++) {
-            pos_pool[i] -= i;
+        std::vector<iterator> elems_to_erase;
+        for (const auto &pos : pos_pool) {
+            Node2<value_t> *node_to_erase = get_node(pos);
+            if (node_to_erase == nullptr) continue;
+            elems_to_erase.emplace_back(node_to_erase);
         }
 
-        for (auto pos : pos_pool) {
+        for (const auto& elem : elems_to_erase) {
+            int pos = get_pos(elem);
+            if (pos == -1) continue;
             this->erase(pos);
         }
         return;

@@ -7,6 +7,11 @@
 
 #define NODE_LIST_TYPE NodeList2
 
+/*
+    add iterator ot dynamic_array and make it compatible with iterator_traits
+    fix erase()
+*/
+
 void print_array(Array<int> &array) {
     for (int i = 0; i < array.size(); i++) {
         std::cout << array.at(i) << ' ';
